@@ -1,0 +1,20 @@
+<h1>Home</h1>
+
+
+  <%= form_with scope: :search, url: home_path, method: :get, local: true do |form| %>
+   <%= form.label(:color_num, '色番号') %>
+   <%= form.text_field :color_num, value: @search_params[:color_num] %>
+   <%= form.collection_select(:cls, Embroidery.cls, :first, :first, prompt: '色') %>
+   <%= form.collection_select(:tone, Embroidery.tones, :first, :first, prompt: 'トーン') %>
+   <%= form.submit 'search', name: nil %>
+  <% end %>
+
+<table>
+<% @res.each do |emb| %>
+ <tr>
+  <td><%= emb.color_num %></td>
+  <td><%= emb.cls %></td>
+  <td><%= emb.tone %></td>
+ </tr>
+<% end %>
+</table>

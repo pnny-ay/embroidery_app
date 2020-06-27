@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  color_num: MyString
+  color: MyString
+  class: 1
+  tone: 1
+
+two:
+  color_num: MyString
+  color: MyString
+  class: 1
+  tone: 1
