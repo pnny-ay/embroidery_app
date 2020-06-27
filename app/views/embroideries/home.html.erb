@@ -1,20 +1,29 @@
-<h1>Home</h1>
-
+<div class=margin>
+<h1>刺繍糸検索</h1>
+</div>
 
   <%= form_with scope: :search, url: home_path, method: :get, local: true do |form| %>
+  <div class=field>
    <%= form.label(:color_num, '色番号') %>
    <%= form.text_field :color_num, value: @search_params[:color_num] %>
-   <%= form.collection_select(:cls, Embroidery.cls, :first, :first, prompt: '色') %>
-   <%= form.collection_select(:tone, Embroidery.tones, :first, :first, prompt: 'トーン') %>
+   <%= form.label(:cls, '色の種類') %>
+   <%= form.collection_select(:cls, Embroidery.cls, :first, :first, prompt: '選択') %>
+   <%= form.label(:tone, 'トーン') %>
+   <%= form.collection_select(:tone, Embroidery.tones, :first, :first, prompt: '選択') %>
+   </div>
    <%= form.submit 'search', name: nil %>
   <% end %>
 
+<div class=margin>
+<h2>検索結果</h2>
+</div>
 <table>
 <% @res.each do |emb| %>
- <tr>
+  <tr>
+  <td><font size="6" color="<%= emb.color %>">●</font></td>
   <td><%= emb.color_num %></td>
   <td><%= emb.cls %></td>
   <td><%= emb.tone %></td>
- </tr>
+  </tr>
 <% end %>
 </table>

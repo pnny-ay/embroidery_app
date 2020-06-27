@@ -1,6 +1,6 @@
 class Embroidery < ApplicationRecord
-  enum cls: {red: 1, orange: 2, yellow: 3, green: 4, blue: 5, purple: 6, brown: 7, white: 8, black: 9}
-  enum tone: {pale: 1, light: 2, bright: 3, soft: 4, grayish: 5, dull: 6, strong: 7, vivid: 8, deep: 9, dark: 10}
+  enum cls: {赤: 1, オレンジ: 2, 黄色: 3, 緑: 4, 青: 5, 紫: 6, 茶色: 7, 白: 8, 黒: 9}
+  enum tone: {ペール: 1, ライト: 2, ブライト: 3, ソフト: 4, グレイッシュ: 5, ダル: 6, ストロング: 7, ビビッド: 8, ディープ: 9, ダーク: 10}
 
   scope :search, -> (search_params) do
     return if search_params.blank?
