@@ -1,7 +1,8 @@
+<%= render 'layouts/header' %>
 <div class=margin>
-<h1>刺繍糸検索</h1>
+<h1>検索</h1>
 </div>
-
+<p><%= link_to "ユーザー登録", signup_path %>すると在庫管理ができます。</p>
   <%= form_with scope: :search, url: home_path, method: :get, local: true do |form| %>
   <div class=field>
    <%= form.label(:color_num, '色番号') %>
@@ -15,7 +16,7 @@
   <% end %>
 
 <div class=margin>
-<h2>検索結果</h2>
+
 </div>
 <table>
 <% @res.each do |emb| %>
@@ -27,3 +28,4 @@
   </tr>
 <% end %>
 </table>
+<%= render 'layouts/footer' %>
