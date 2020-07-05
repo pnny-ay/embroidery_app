@@ -1,11 +1,21 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-   <div class="container">
+<header class="navbar navbar-expand fixed-top navbar-dark bg-dark">
+   <div class="container-fluid">
+     <% if user_signed_in? %>
+     <%= link_to "刺繍糸管理-#{current_user.name}さん", root_path, id: "logo" %>
+     <% else %>
      <%= link_to "刺繍糸管理", home_path, id: "logo" %>
+     <%end%>
      <nav>
-       <ul class="nav navbar-nav navbar-right">
-         <li><%= link_to "Home",   home_path %></li>
-         <li><%= link_to "about",   about_path %></li>
-         <li><%= link_to "Log in", '#' %></li>
+       <ul class="navbar-nav ml-auto" >
+         <li class="nav-item"><%= link_to "一覧", :yarn, class: "nav-link" %></li>
+         <li class="nav-item"><%= link_to "使い方", about_path, class: "nav-link" %></li>
+         <% if user_signed_in? %>
+         <li class="nav-item"><%= link_to "買う糸リスト", list_path, class: "nav-link" %></li>
+         <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+         <% else %>
+         <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+         <% end %>
+
        </ul>
      </nav>
    </div>

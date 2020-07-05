@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # coding: utf-8
+UsersEmbroidery.create(user_id: 1, embroidery_id: 1)
 Embroidery.create(color_num: '220', color: '#f6d5cc', cls: 1, tone: 1)
 Embroidery.create(color_num: '221', color: '#ecb9be', cls: 1, tone: 2)
 Embroidery.create(color_num: '2221', color: '#dda0a8', cls: 1, tone: 4)

@@ -1,0 +1,2 @@
+class EmbroideryController < ApplicationController
+end

@@ -1,0 +1,37 @@
+<%= render 'layouts/header' %>
+<% if flash.notice %>
+<div class="alert alert-success" role="alert">
+<%= notice %>
+</div>
+<% end %>
+<% if !user_signed_in? %>
+<p><%= link_to "ログイン", new_user_session_path %>または<%= link_to "新規登録", new_user_registration_path %>すると在庫管理ができます。</p>
+<% end %>
+
+  <%= form_with scope: :search, url: yarn_path, method: :get, local: true do |form| %>
+  <div class="form-group ml-auto">
+   <%= form.label(:color_num, '色番号') %>
+   <%= form.text_field :color_num, value: @search_params[:color_num] %>
+   <%= form.collection_select(:cls, Embroidery.cls, :first, :first, prompt: '色') %>
+   <%= form.collection_select(:tone, Embroidery.tones, :first, :first, prompt: 'トーン') %>
+   <%= form.submit "search", class: "btn btn-outline-primary" %>
+   </div>
+  <% end %>
+
+<div class=margin>
+
+</div>
+<table>
+<% @res.each do |emb| %>
+  <tr>
+  <td><font size="6" color="<%= emb.color %>">●</font></td>
+  <td><%= emb.color_num %></td>
+  <td><%= emb.cls %></td>
+  <td><%= emb.tone %></td>
+  <% if user_signed_in? %>
+    <td><%= link_to "リストに追加", {controller: "embroideries", action: "create", user_id: current_user.id, embroidery_id: emb.id}, method: :post %>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+<%= render 'layouts/footer' %>

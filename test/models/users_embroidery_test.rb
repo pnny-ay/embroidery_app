@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserEmbroideryTest < ActiveSupport::TestCase
+class UsersEmbroideryTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

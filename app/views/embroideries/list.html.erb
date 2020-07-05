@@ -1,0 +1,18 @@
+<%= render 'layouts/header' %>
+<% if flash.notice %>
+<div class="alert alert-success" role="alert">
+<%= notice %>
+</div>
+<% end %>
+<h2>買う糸リスト</h2>
+<table>
+  <% @list_buy.each do |emb| %>
+   <tr>
+    <td><font size="6" color="<%= emb.color %>">●</font></td>
+    <td><%= emb.color_num %></td>
+    <td><%= emb.cls %></td>
+    <td><%= emb.tone %></td>
+    <td><%= link_to "削除", {controller: "embroideries", action: "destroy", user_id: current_user.id, embroidery_id: emb.id}, method: :delete %>
+  </tr>
+  <% end %>
+</table>
