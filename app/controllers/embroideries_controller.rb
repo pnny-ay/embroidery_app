@@ -10,7 +10,19 @@ class EmbroideriesController < ApplicationController
 
   def yarn
     @search_params = emb_search_params
+
+    if @search_params.empty?
+      @search_params[:color_num] = cookies['save_search_params_color_num'] if cookies['save_search_params_color_num'].present?
+      @search_params[:cls] = cookies['save_search_params_cls'] if cookies['save_search_params_cls'].present?
+      @search_params[:tone] = cookies['save_search_params_tone'] if cookies['save_search_params_tone'].present?
+      @res = Embroidery.search(@search_params) #検索結果
+    else
     @res = Embroidery.search(@search_params) #検索結果
+        cookies['save_search_params_color_num'] = emb_search_params[:color_num]
+        cookies['save_search_params_cls'] = emb_search_params[:cls]
+        cookies['save_search_params_tone'] = emb_search_params[:tone]
+    end
+      render :yarn
   end
 
 

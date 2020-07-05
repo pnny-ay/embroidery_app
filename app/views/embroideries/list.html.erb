@@ -1,9 +1,4 @@
 <%= render 'layouts/header' %>
-<% if flash.notice %>
-<div class="alert alert-success" role="alert">
-<%= notice %>
-</div>
-<% end %>
 <h2>買う糸リスト</h2>
 <table>
   <% @list_buy.each do |emb| %>
