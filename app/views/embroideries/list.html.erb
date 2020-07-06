@@ -1,5 +1,7 @@
 <%= render 'layouts/header' %>
 <h2>買う糸リスト</h2>
+<%= @list_buy_num %>件
+<%= paginate @list_buy %>
 <table>
   <% @list_buy.each do |emb| %>
    <tr>
@@ -11,3 +13,5 @@
   </tr>
   <% end %>
 </table>
+<%= paginate @list_buy %>
+<%= render 'layouts/footer' %>

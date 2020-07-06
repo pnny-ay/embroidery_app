@@ -14,8 +14,9 @@
   <% end %>
 
 <div class=margin>
-
 </div>
+<%= @res_num %>件
+<%= paginate @res %>
 <table>
 <% @res.each do |emb| %>
   <tr>
@@ -29,4 +30,5 @@
   </tr>
 <% end %>
 </table>
+<%= paginate @res %>
 <%= render 'layouts/footer' %>

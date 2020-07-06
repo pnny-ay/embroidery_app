@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 root 'embroideries#home'
-
+  get '/contact', to: 'embroideries#contact'
   get '/home', to: 'embroideries#home'
   get '/yarn', to: 'embroideries#yarn'
   get '/about', to: 'embroideries#about'

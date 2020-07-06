@@ -15,9 +15,11 @@ class EmbroideriesController < ApplicationController
       @search_params[:color_num] = cookies['save_search_params_color_num'] if cookies['save_search_params_color_num'].present?
       @search_params[:cls] = cookies['save_search_params_cls'] if cookies['save_search_params_cls'].present?
       @search_params[:tone] = cookies['save_search_params_tone'] if cookies['save_search_params_tone'].present?
-      @res = Embroidery.search(@search_params) #検索結果
+      @res = Embroidery.search(@search_params).page(params[:page]) #検索結果
+      @res_num = Embroidery.search(@search_params).count
     else
-    @res = Embroidery.search(@search_params) #検索結果
+    @res = Embroidery.search(@search_params).page(params[:page]) #検索結果
+    @res_num = Embroidery.search(@search_params).count
         cookies['save_search_params_color_num'] = emb_search_params[:color_num]
         cookies['save_search_params_cls'] = emb_search_params[:cls]
         cookies['save_search_params_tone'] = emb_search_params[:tone]
@@ -30,7 +32,8 @@ class EmbroideriesController < ApplicationController
   end
 
   def list
-    @list_buy = current_user.embroideries
+    @list_buy = current_user.embroideries.page(params[:page])
+    @list_buy_num = current_user.embroideries.count
   end
 
   def destroy
