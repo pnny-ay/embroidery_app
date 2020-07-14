@@ -21,6 +21,12 @@ h1 {
   margin-bottom: 30px;
 }
 
+.jumbotron {
+  background-image: url("/assets/images/title.jpg");
+  background-size: cover;
+  background-position: center 60%;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
