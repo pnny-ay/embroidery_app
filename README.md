@@ -1,6 +1,6 @@
 # README
 
-# https://young-coast-35285.herokuapp.com/home
+https://young-coast-35285.herokuapp.com/home
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
