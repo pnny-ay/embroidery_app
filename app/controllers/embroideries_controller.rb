@@ -11,13 +11,13 @@ class EmbroideriesController < ApplicationController
   def yarn
     @search_params = emb_search_params
 
-    if @search_params.empty?
+    if @search_params.empty? #検索条件がなにもないとき→前回の検索条件で検索(リスト追加での更新用)
       @search_params[:color_num] = cookies['save_search_params_color_num'] if cookies['save_search_params_color_num'].present?
       @search_params[:cls] = cookies['save_search_params_cls'] if cookies['save_search_params_cls'].present?
       @search_params[:tone] = cookies['save_search_params_tone'] if cookies['save_search_params_tone'].present?
       @res = Embroidery.search(@search_params).page(params[:page]) #検索結果
       @res_num = Embroidery.search(@search_params).count
-    else
+    else #検索条件があるとき→cookieに条件を保存
     @res = Embroidery.search(@search_params).page(params[:page]) #検索結果
     @res_num = Embroidery.search(@search_params).count
         cookies['save_search_params_color_num'] = emb_search_params[:color_num]
@@ -43,7 +43,7 @@ class EmbroideriesController < ApplicationController
   end
 
   private
-  def emb_search_params
+  def emb_search_params #検索条件がないとき、nilでなく空となる
     params.fetch(:search, {}).permit(:id, :color_num, :cls, :tone)
   end
 

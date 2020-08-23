@@ -2,6 +2,7 @@ class Embroidery < ApplicationRecord
   enum cls: {赤: 1, オレンジ: 2, ピンク: 3,黄色: 4, 黄緑: 5, 緑: 6, 水色: 7, 青: 8, 紫: 9, 茶色: 10, 白: 11, 灰色: 12, 黒: 13}
   enum tone: {ペール: 1, ライト: 2, ブライト: 3, ソフト: 4, グレイッシュ: 5, ダル: 6, ストロング: 7, ビビッド: 8, ディープ: 9, ダーク: 10}
 
+#中間テーブル用処理
   has_many :users_embroideries
   has_many :users, through: :users_embroideries
 
