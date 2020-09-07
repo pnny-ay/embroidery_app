@@ -25,7 +25,7 @@
   <td><%= emb.cls %></td>
   <td><%= emb.tone %></td>
   <% if user_signed_in? %>
-    <td><%= link_to "リストに追加", {controller: "embroideries", action: "create", user_id: current_user.id, embroidery_id: emb.id}, method: :post %>
+    <td><%= link_to "リストに追加", {controller: "embroideries", action: "create", embroidery_id: emb.id}, method: :post %>
   <% end %>
   </tr>
 <% end %>

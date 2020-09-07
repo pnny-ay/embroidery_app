@@ -4,6 +4,7 @@ class EmbroideriesController < ApplicationController
 
   def create
     @create_params = users_embroideries_params
+    @create_params[:user_id] = current_user.id
     @buy = UsersEmbroidery.create(@create_params)
     redirect_to :yarn, notice: "買う糸リストに追加しました。"
   end
@@ -38,6 +39,7 @@ class EmbroideriesController < ApplicationController
 
   def destroy
     @destroy_params = users_embroideries_params
+    @destroy_params[:user_id] = current_user.id
     @emb = UsersEmbroidery.find_by(@destroy_params).destroy
     redirect_to :list, notice: "リストから削除しました。"
   end
@@ -48,7 +50,7 @@ class EmbroideriesController < ApplicationController
   end
 
   def users_embroideries_params
-    params.permit(:user_id, :embroidery_id)
+    params.permit(:embroidery_id)
   end
 
 end
